@@ -28,12 +28,12 @@
 <body>
 
     <nav>
-        <a href="/"><img src="/logo.svg" alt="logo" id="logo"></a>
+        <a href="index.html"><img src="logo.svg" alt="logo" id="logo"></a>
         <ul>
-            <li id="home" class="active"><a href="/"> Home</a></li>
-            <li id="extract" class=""><a href="/html/extract.html"> Extract Data</a></li>
-            <li id='secure' class=""><a href="/secure.html"> Secure Pdf</a></li>
-            <li id="convert" class=""><a href="/convert.html"> Convert Pdf</a></li>
+            <li id="home" class=""><a href="index.html"> Home</a></li>
+            <li id="extract" class="active"><a href="extract.html"> Extract Data</a></li>
+            <li id='secure' class=""><a href="secure.html"> Secure Pdf</a></li>
+            <li id="convert" class=""><a href="convert.html"> Convert Pdf</a></li>
             
         </ul>
     </nav>
@@ -43,6 +43,12 @@
             <label for="pdf_file">PDF File</label>
             <input type="file" name="pdf_file" placeholder="Select a PDF file" required="">
         </div>
+        <label for="text-format">specify text type format</label>
+        <select name="text-format" id="">
+            <option value="plain-text">Plain text</option>
+            <option value="json">Json</option>
+            <option value="csv">Csv</option>
+        </select>
         <input type="submit" name="submit" class="btn" value="Extract Text">
     </form>
 

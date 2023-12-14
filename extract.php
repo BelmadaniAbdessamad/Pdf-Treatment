@@ -1,6 +1,7 @@
 <?php
 
 
+
 $pdfText = ''; 
 if(isset($_POST['submit'])){ 
     // If file is selected 
@@ -8,7 +9,7 @@ if(isset($_POST['submit'])){
         // File upload path 
         $fileName = basename($_FILES["pdf_file"]["name"]); 
         $fileType = pathinfo($fileName, PATHINFO_EXTENSION); 
-         
+       
         // Allow certain file formats 
         $allowTypes = array('pdf'); 
         if(in_array($fileType, $allowTypes)){ 
@@ -38,4 +39,10 @@ if(isset($_POST['submit'])){
 } 
  
 // Display text content 
-echo $pdfText;
+$jsonData = json_encode($pdfText, JSON_PRETTY_PRINT);
+header('Content-Type: application/json');
+header('Content-Disposition: attachment; filename="generated_data.json"');
+
+// Output the JSON data
+echo $jsonData;
+

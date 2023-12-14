@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pdf treatment</title>
+</head>
+<body>
+
+    <form action="extract.php" method="post" enctype="multipart/form-data">
+        <div class="form-input">
+            <label for="pdf_file">PDF File</label>
+            <input type="file" name="pdf_file" placeholder="Select a PDF file" required="">
+        </div>
+        <input type="submit" name="submit" class="btn" value="Extract Text">
+    </form>
+    
+</body>
+</html>

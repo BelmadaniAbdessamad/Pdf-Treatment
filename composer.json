@@ -1,0 +1,16 @@
+{
+    "name": "fujitsu/pdf-treatment",
+    "autoload": {
+        "psr-4": {
+            "Fujitsu\\PdfTreatment\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "The Codeholics"
+        }
+    ],
+    "require": {
+        "smalot/pdfparser": "^2.7"
+    }
+}

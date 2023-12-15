@@ -39,17 +39,19 @@
     </nav>
 
     <form action="extract.php" method="post" enctype="multipart/form-data">
+        <h1>Extract links, images ... </h1>
         <div class="form-input">
             <label for="pdf_file">PDF File</label>
             <input type="file" name="pdf_file" placeholder="Select a PDF file" required="">
         </div>
         <label for="text-format">specify text type format</label>
-        <select name="text-format" id="">
-            <option value="plain-text">Plain text</option>
-            <option value="json">Json</option>
-            <option value="csv">Csv</option>
-        </select>
-        <input type="submit" name="submit" class="btn" value="Extract Text">
+        <div>
+            <span><b>Options : </b></span>
+           
+            <input type="checkbox" name="options_arr[]" value="links">Links</input>
+            <input type="checkbox" name="options_arr[]" value="images">Images</input>
+        </div>
+        <input type="submit" name="submit" class="btn" value="Extract">
     </form>
 
 </body>

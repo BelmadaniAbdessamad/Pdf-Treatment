@@ -4,11 +4,12 @@ const googleTTS = require("google-tts-api");
 const path = require("path");
 
 
-const textToSpeech = async (text, slow = false, folder = "output") => {
+const textToSpeech = async (text, slow = false, lang='en',folder = "output") => {
+  console.log(lang)
   if (text.length <= 200) {
     try {
       const base64Audio = await googleTTS.getAudioBase64(text, {
-        lang: "en",
+        lang: lang,
         slow: slow,
         host: "https://translate.google.com",
         timeout: 10000,
@@ -22,7 +23,7 @@ const textToSpeech = async (text, slow = false, folder = "output") => {
   } else {
     try {
       const dataArr = await googleTTS .getAllAudioBase64(text, {
-        lang: 'en',
+        lang: lang,
         slow: slow,
         host: 'https://translate.google.com',
         timeout: 10000,

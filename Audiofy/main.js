@@ -3,6 +3,7 @@ const { extractTextFromPDF } = require("./pdfToText");
 const path = require("path");
 const { textToSpeech } = require("./textToAudio");
 const { cleanText } = require("./cleanText");
+const { getFormalLanguageCode } = require("./detectLang");
 
 const main = async () => {
     console.log(
@@ -47,6 +48,7 @@ const main = async () => {
         const result = await textToSpeech(
           cleanText(data),
            slow === "n" ? false : true,
+           getFormalLanguageCode(data)
         );
 
         console.log(result)

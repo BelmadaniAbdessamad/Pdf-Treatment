@@ -1,0 +1,26 @@
+{
+  "name": "pdf-treatment",
+  "version": "1.0.0",
+  "description": "we will the following features : \r ### extracting data from pdf\r ### converting pdf to another formats\r ### convert pdf text into audio",
+  "main": "Audiofy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BelmadaniAbdessamad/Pdf-Treatment.git"
+  },
+  "author": "Belmadani Abdessamad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BelmadaniAbdessamad/Pdf-Treatment/issues"
+  },
+  "homepage": "https://github.com/BelmadaniAbdessamad/Pdf-Treatment#readme",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "english-words": "^0.0.1",
+    "google-tts-api": "^2.0.2",
+    "is-english": "^1.3.0",
+    "pdf-parse": "^1.1.1"
+  }
+}

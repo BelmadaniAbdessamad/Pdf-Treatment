@@ -1,6 +1,6 @@
 // const { extractTextFromPDF } = require("./pdfToText");
 
-function cleanEnglishText(text = '') {
+function cleanText(text = '') {
   // Remove HTML tags and their content, including tag names
   const textWithoutHtml = text.replace(/<[^>]+>/g, '');
 
@@ -18,7 +18,7 @@ function cleanEnglishText(text = '') {
 
 
 module.exports ={
-  cleanEnglishText
+  cleanText
 }
 
 // extractTextFromPDF('../test-std.pdf').then(data=>{

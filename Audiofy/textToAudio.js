@@ -4,7 +4,7 @@ const googleTTS = require("google-tts-api");
 const path = require("path");
 
 
-const textToSpeech = async (text, slow = false , folder = "output") => {
+const textToSpeech = async (text, slow = false, folder = "output") => {
   if (text.length <= 200) {
     try {
       const base64Audio = await googleTTS.getAudioBase64(text, {
@@ -48,7 +48,7 @@ function saveAudioFile(buffer, folder) {
     const filePath = path.join(folderPath, fileName);
     fs.writeFileSync(filePath, Buffer.from(buffer, 'base64'));
   
-    console.log('Saved successfully:', filePath);
+    console.log('Saved successfully:');
   
     // Return the absolute path of the saved file
     return filePath;

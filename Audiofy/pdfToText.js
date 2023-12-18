@@ -10,7 +10,7 @@ function extractTextFromPDF(pdfPath) {
       const dataBuffer = fs.readFileSync(pdfPath);
      
       pdf(dataBuffer).then(data => {
-        resolve(Buffer.from(data.text,'binary').toString('utf8'));
+        resolve(/*Buffer.from(data.text,'binary').toString('utf-8') */data.text);
       }).catch(err => {
         reject("Something went wrong: " + err);
       });
@@ -23,3 +23,5 @@ function extractTextFromPDF(pdfPath) {
 //   console.log(data)
 // })
 module.exports.extractTextFromPDF = extractTextFromPDF;
+
+

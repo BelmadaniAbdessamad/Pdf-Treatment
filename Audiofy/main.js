@@ -46,7 +46,7 @@ const main = async () => {
       
       
         const result = await textToSpeech(
-          cleanText(data),
+          /*cleanText(data)*/data,
            slow === "n" ? false : true,
            getFormalLanguageCode(data)
         );

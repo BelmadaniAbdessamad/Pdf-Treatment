@@ -2,10 +2,11 @@
 const fs = require("fs");
 const googleTTS = require("google-tts-api");
 const path = require("path");
-
+const uft8  =require('utf8')
 
 const textToSpeech = async (text, slow = false, lang='en',folder = "output") => {
-  console.log(lang)
+  console.log({lang})
+  //console.log({text })
   if (text.length <= 200) {
     try {
       const base64Audio = await googleTTS.getAudioBase64(text, {

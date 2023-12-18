@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>PDF Metadata  Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+
+        input,
+        button {
+            margin: 10px;
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        label {
+            font-size: 14px;
+        }
+
+        #metadataInfo {
+            margin-top: 20px;
+        }
+    </style>
+    <script src="https://unpkg.com/pdf-lib@1.5.0"></script>
+</head>
+
+<body>
+    <h2>PDF Metadata Tool</h2>
+
+    <input type="file" id="fileInput" accept=".pdf">
+    <br>
+    <button onclick="load()">load</button>
+    <br>
+    <button onclick="modifyAndDownload()">Modify and Download</button>
+
+    <div id="metadataInfo">
+        <h3>Metadata Information</h3>
+        <label for="titleInput">Title:</label>
+        <input type="text" id="titleInput" placeholder="Enter ntitle">
+        <br>
+        <label for="authorInput">Author:</label>
+        <input type="text" id="authorInput" placeholder="Enter author">
+        <br>
+        <label for="authorInput">Subject:</label>
+        <input type="text" id="newSubject" placeholder="Enter author">
+    </div>
+
+    <script>
+
+        //// ------load file and populate fields with ex-metadata 
+        async function load() {
+            // Load file
+            const file = fileInput.files[0];
+            const arrayBuffer = await file.arrayBuffer();
+            const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
+
+            // Extract metadata from the loaded PDF
+            const title = pdfDoc.getTitle();
+            const author = pdfDoc.getAuthor();
+            const subject = pdfDoc.getSubject();
+
+            // Populate input fields with extracted metadata
+            document.getElementById('titleInput').value = title;
+            document.getElementById('authorInput').value = author;
+            document.getElementById('newSubject').value = subject;
+        }
+        //--------Modify metadata and redownload the pdf file
+        async function modifyAndDownload() {
+            // load file
+            const file = fileInput.files[0];
+            const arrayBuffer = await file.arrayBuffer();
+            const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
+            // print matadata
+            console.log("Before Modification :::::::::::::::::::::");
+            console.log('Title:', pdfDoc.getTitle());
+            console.log('Author:', pdfDoc.getAuthor());
+            console.log('Subject:', pdfDoc.getSubject())
+            console.log('Creator:', pdfDoc.getCreator())
+
+            const newTitle = document.getElementById('titleInput').value;
+            const newAuthor = document.getElementById('authorInput').value;
+            const newSubject = document.getElementById('newSubject').value;
+
+            // set new metadata with labels values
+            pdfDoc.setTitle(newTitle);
+            pdfDoc.setAuthor(newAuthor);
+            pdfDoc.setCreator(newAuthor)
+            pdfDoc.setSubject(newSubject)
+
+            // print updated metadata
+            console.log("After Modification :::::::::::::::::::::");
+            console.log('Title:', pdfDoc.getTitle());
+            console.log('Author:', pdfDoc.getAuthor());
+            console.log('Subject:', pdfDoc.getSubject());
+            console.log('Creator:', pdfDoc.getCreator());
+
+            // save
+            const pdfBytes = await pdfDoc.save();
+
+            //// Download new Pdf
+            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'modified.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+        }
+    </script>
+</body>
+
+</html>
